@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" id="whole-page">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="print.min.js"></script>
+  <link rel="stylesheet" href="print.min.css">
+</head>
+
+<body>
+  <!-- normal pdf print +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS(window.location.origin + '/print.js/src/lorem-ipsum.pdf')">
+    Print PDF
+  </button>
+  <br><br>
+
+  <!-- big pdf files +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({printable:'/print.js/src/largefile.pdf', type:'pdf', showModal:true})">
+    Print Large PDF file
+  </button>
+  <br><br>
+
+  <!-- print html +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS('whole-page', 'html')">
+    Print HTML
+  </button>
+  <br><br>
+
+  <!-- print html with header +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({printable: 'whole-page', type: 'html', header: 'Sameple header text'})">
+    Print HTML with header
+  </button>
+  <br><br>
+
+  <hr>
+  <!-- print Image +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  Print Image (click on image) <br>
+  <img src="https://picsum.photos/seed/666/150/150" onclick="printJS('https\:\/\/picsum.photos\/seed\/666\/1500\/1500', 'image')"/>
+  <img src="https://picsum.photos/seed/555/150/150" onclick="printJS('https\:\/\/picsum.photos\/seed\/555\/1500\/1500', 'image')"/>
+  <img src="https://picsum.photos/seed/444/150/150" onclick="printJS('https\:\/\/picsum.photos\/seed\/444\/1500\/1500', 'image')"/>
+  <img src="https://picsum.photos/seed/333/150/150" onclick="printJS('https\:\/\/picsum.photos\/seed\/333\/1500\/1500', 'image')"/>
+
+  <hr>
+  <!-- print image with header +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  Print Image with header (click on image) <br>
+  <img src="https://picsum.photos/seed/666/150/150" onclick="printJS({printable: 'https\:\/\/picsum.photos\/seed\/666\/1500\/1500', type: 'image', header: 'Pic1'})"/>
+  <img src="https://picsum.photos/seed/555/150/150" onclick="printJS({printable: 'https\:\/\/picsum.photos\/seed\/555\/1500\/1500', type: 'image', header: 'Pic2'})"/>
+  <img src="https://picsum.photos/seed/444/150/150" onclick="printJS({printable: 'https\:\/\/picsum.photos\/seed\/444\/1500\/1500', type: 'image', header: 'Pic3'})"/>
+  <img src="https://picsum.photos/seed/333/150/150" onclick="printJS({printable: 'https\:\/\/picsum.photos\/seed\/333\/1500\/1500', type: 'image', header: 'Pic4'})"/>
+  <br><br>
+
+  
+  <!-- print multiple images +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({
+    printable: ['https\:\/\/picsum.photos\/seed\/666\/1500\/1500', 'https\:\/\/picsum.photos\/seed/555\/1500\/1500', 'https\:\/\/picsum.photos\/seed\/444\/1500\/1500', 'https\:\/\/picsum.photos\/seed\/333\/1500\/1500'],
+    type: 'image',
+    header: 'Multiple Images',
+    imageStyle: 'width:25%;margin-bottom:20px;'
+  })">
+    Print multiple images
+  </button>
+  <hr>
+
+  <!-- json data sample +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <script>
+  sampleJSON = [
+  {
+    name: 'John Doe',
+    email: 'john@doe.com',
+    phone: '111-111-1111'
+  },
+  {
+    name: 'Barry Allen',
+    email: 'barry@flash.com',
+    phone: '222-222-2222'
+  },
+  {
+    name: 'Cool Dude',
+    email: 'cool@dude.com',
+    phone: '333-333-3333'
+  }]
+  </script>
+
+  <!-- print json data sample +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({printable: sampleJSON, properties: ['name', 'email', 'phone'], type: 'json'})">
+    Print JSON Data
+  </button>
+
+  <!-- print jason data with style table +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({
+    printable: sampleJSON,
+    properties: ['name', 'email', 'phone'],
+    type: 'json',
+    gridHeaderStyle: 'color: red;  border: 2px solid #3971A5;',
+    gridStyle: 'border: 2px solid #3971A5;'
+  })">
+  Print JSON Data (style table)
+  </button>
+
+  <!-- print jason data with custom header text +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({
+    printable: sampleJSON,
+    properties: [
+      { field: 'name', displayName: 'Full Name'},
+      { field: 'email', displayName: 'E-mail'},
+      { field: 'phone', displayName: 'Phone'}
+    ],
+    type: 'json'
+      })">
+    Print with custom table header text
+  </button>
+
+  <!-- print jason data with custom header text +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+  <button type="button" onclick="printJS({
+		printable: sampleJSON,
+		type: 'json',
+		properties: ['name', 'email', 'phone'],
+		header: '<h3 class=custom-h3>My custom header</h3>',
+		style: '.custom-h3 { color: red; }'
+	  })">
+    Print header raw html
+  </button>
+ 
+
+</body>
+
+</html>
